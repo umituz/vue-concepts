@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <title>Document</title>
+</head>
+<body>
+<div id="app" class="container" style="margin-top:40px;">
+    <p>{{ baslik | buyukharf }}</p>
+    <p>{{ baslik | kucukharf }}</p>
+    <p>{{ baslik | ilkharfbuyuk }}</p>
+    <p>{{ baslik | ilkharflerbuyuk }}</p>
+    <p>{{ baslik | terstenyaz }}</p>
+    <p>{{ baslik | ucnokta(10) }}</p>
+    <p>{{ baslik | terstenyaz | ucnokta(10) }}</p>
+    <p :title="baslik | terstenyaz">LOREM IPSUM</p>
+    <hr>
+    <input type="text" class="form-control" v-model.trim="baslik">
+    <pre class="alert alert-info">{{ baslik }}</pre>
+    <hr>
+    <input type="text" class="form-control" v-model.number="sayi">
+    <pre class="alert alert-info">{{ sayi + sayi}}</pre>
+</div>
+
+<script src="../assets/js/vue.js"></script>
+<script>
+    Vue.filter('terstenyaz',function(value){
+        return value.toString().split('').reverse().join('');
+    });
+    Vue.filter('ucnokta',function(value,length){
+        if(value.length < length){
+            return value;
+        }
+        length = length - 3;
+        return value.substring(0,length) + '...';
+    });
+    const app = new Vue({
+        el:'#app',
+        name:'Ümit UZ VueJS',
+        data:{
+            baslik:'i want to live full',
+            sayi:10
+        },
+        filters:{
+            buyukharf(value){
+                return value.toString().toUpperCase();
+            },
+            kucukharf(value){
+                return value.toString().toLowerCase();
+            },
+            ilkharfbuyuk(value){
+                return value.toString().charAt(0).toUpperCase() + value.slice(1);
+            },
+            ilkharflerbuyuk(value){
+                let kelimeler = value.toString().split(' ');
+                let kelimeDongu = '';
+                kelimeler.forEach(kelime => {
+                    kelimeDongu += kelime.toString().charAt(0).toUpperCase() + kelime.slice(1) + ' ';
+                });
+                return kelimeDongu;
+            }
+        }
+    });
+</script>
+</body>
+</html>

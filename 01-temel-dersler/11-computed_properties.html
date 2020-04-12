@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <title>Document</title>
+</head>
+<body>
+<div id="app" class="container" style="margin-top:40px;">
+    <input type="text" class="form-control" v-model="ad">
+    <input type="text" class="form-control" v-model="soyad">
+    <input type="text" class="form-control" v-model="urun_fiyati">
+    <p> AD SOYAD : {{ adsoyad }} </p>
+    <p> ÜRÜN FİYATI : {{ urun_fiyati }}</p>
+    <p> ÜRÜN FİYATI KDV : {{ urun_kdv_fiyati }}</p>
+    <p> İSİM SOYİSİM : {{ isimsoyisim }}</p>
+    <p> NAME SURNAME : {{ namesurname() }}</p>
+    <p>
+        <ul>
+            <li v-for="kullanici in u_ile_baslayan_kullanicilar">
+                {{ kullanici }}
+            </li>
+        </ul>
+    </p>
+</div>
+<script src="../assets/js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',
+        name:'Ümit UZ VueJS',
+        data:{
+            ad:"Ümit",
+            soyad:"UZ",
+            urun_fiyati:15,
+            kullanicilar:["umut","umit","mahmut","necati","mustafa","halil"]
+        },
+        methods:{
+          namesurname(){
+              return this.ad + ' ' + this.soyad;
+          }
+        },
+        computed:{
+            adsoyad(){
+                return this.ad + ' ' + this.soyad;
+            },
+            urun_kdv_fiyati(){
+                return this.urun_fiyati * 18/100;
+            },
+            isimsoyisim:{
+                get: function(){
+                    return this.ad + ' ' + this.soyad;
+                },
+                set:function(value){
+                    let parts = value.split(' ');
+                    this.ad = parts[0];
+                    this.soyad = parts[1];
+                }
+            },
+            u_ile_baslayan_kullanicilar(){
+               return this.kullanicilar.filter(k => k.startsWith('u'));
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" class="container" style="margin-top:40px;">
+        <span class="badge badge-success">
+            {{ sayi }}
+        </span>
+        <p v-text="message"></p>
+        <p v-html="message_html"></p>
+        <hr>
+        <div>
+            <label for="">Mesaj</label>
+            <input type="text" v-model="message" class="form-controll">
+        </div>
+        <hr>
+        <div>
+            <label for="">Fiyat</label>
+            <input type="text" v-model.number="fiyat" class="form-controll">
+            <p>KDV Tutarı : {{ fiyat * 18 / 100  }}</p>
+            <p>{{ (fiyat * 18 / 100) < 10 ? 'DÜŞÜK' : 'YÜKSEK' }}</p>
+            <p v-once="fiyat">{{ (fiyat * 18 / 100) < 10 ? 'DÜŞÜK' : 'YÜKSEK' }}</p>
+        </div>
+    </div>
+    <script src="../assets/js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            name:'Ümit UZ VueJS',
+            data:{
+                message:'Hello VueJS. I am UMUT. Nice to meet you!',
+                sayi:9998,
+                fiyat:1,
+                message_html:'Ümit <b>UZ</b>'
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/app.css">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <div id="app" class="container" style="margin-top:40px;">
+        
+        <button class="btn btn-success float-right" @click="kullaniciYeniEkle">+ Yeni Ekle</button>
+        
+        <div class="modal fade" tabindex="-1" role="dialog" id="kullaniciModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title">Kullanıcı</div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form @submit.prevent="true">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">İsim</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" v-model="aktifKullanici.isim" placeholder="İsim giriniz.">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Rütbe</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" v-model="aktifKullanici.rol">
+                                        <option value="Seçiniz">Seçiniz</option>
+                                        <option value="SuperVisor">SuperVisor</option>
+                                        <option value="Admin">Admin</option>
+                                        <option value="User">User</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" @click="kullaniciKaydet">Kaydet</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h1>Kullanıcılar ({{ kullanicilar.length }})</h1>
+        <hr>
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr class="bg-success text-white">
+                <th>Sıra No</th>
+                <th>ID</th>
+                <th>İsim</th>
+                <th>Rol</th>
+                <th>İşlemler</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(kullanici,index) in kullanicilar">
+                <td>{{ ++index }}</td>
+                <td>{{ kullanici.id }}</td>
+                <td>{{ kullanici.isim }}</td>
+                <td>{{ kullanici.rol }}</td>
+                <td>
+                    <a href="javascript:" @click="kullaniciDuzenle(index)" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Düzenle</a>
+                    <a href="javascript:" @click="kullaniciSil(kullanici.id)" class="btn btn-danger btn-sm"><i class="fa fa-rub"></i> Sil</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="../../assets/js/vue.js"></script>
+<script src="../../assets/js/jquery.min.js"></script>
+<script src="../../assets/js/bootstrap.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <title>Document</title>
+</head>
+<body>
+<div id="app" class="container" style="margin-top:40px;">
+    <alert-hello>Serap</alert-hello>
+    <alert-hello>Melisa</alert-hello>
+    <alert-hello></alert-hello>
+    <card></card>
+    <hr>
+    <hr>
+    <card-with-header>
+        <template slot="header">Üye Girişi</template>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi atque autem dolor, dolore eius libero neque non officia quae qui, soluta ullam ut? Asperiores fugit iusto, maiores odio quam reprehenderit!
+        <template slot="footer">
+            <button class="btn btn-primary">Giriş Yap</button>
+        </template>
+    </card-with-header>
+</div>
+<script src="../assets/js/vue.js"></script>
+<script>
+    Vue.component('alert-hello',{
+        template:'<div class="alert alert-success"><slot>SERAP MISIN YOKSA GERÇEK Mİ?</slot></div>'
+    });
+    Vue.component('card',{
+        template:'<div class="card"><div class="card-body"><div class="card-text"><slot>Benim gibi birini kaçırdın...</slot></div></div></div>'
+    });
+    Vue.component('CardWithHeader',{
+        template:'<div class="card">' +
+            '<div class="card-header"><slot name="header">Başlık</slot></div>' +
+            '<div class="card-body">' +
+            '<div class="card-text"><slot>Benim gibi birini kaçırdın...</slot></div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="card-footer"><slot name="footer">Alt Kısım</slot></div>'
+    });
+    const app = new Vue({
+        el:'#app',
+        name:'Ümit UZ VueJS',
+        data:{}
+    });
+</script>
+</body>
+</html>

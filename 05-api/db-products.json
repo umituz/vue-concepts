@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "baslik": "Adana Kebap",
+      "kategori": "Kebaplar",
+      "tutar": "24.90",
+      "resim": "../assets/img/urun-adana.jpg"
+    },
+    {
+      "id": 2,
+      "baslik": "Et Döner",
+      "kategori": "Dönerler",
+      "tutar": "14",
+      "resim": "../assets/img/urun-etdoner.jpg"
+    }
+  ],
+  "categoies": [
+    {
+      "id": 1,
+      "title": "Yazılım"
+    },
+    {
+      "id": 2,
+      "title": "Web Programlama"
+    }
+  ]
+}

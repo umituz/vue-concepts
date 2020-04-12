@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <style>
+        .router-link-active{
+            color:red!important;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Routing App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <router-link to="/" exact class="nav-link" active-class="active">Anasayfa</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link to="/hakkimizda" class="nav-link" active-class="active">Hakkımızda</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link :to="urunlerLink" class="nav-link" active-class="active">Ürünler</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link :to="{ path: 'iletisim' }" tag="span" active-class="active" class="nav-link">İletişim</router-link>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <router-view></router-view>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../assets/js/vue.js"></script>
+<script src="../assets/js/vue-router.js"></script>
+<script>
+    const Page_Anasayfa = {
+        template:'<h1>Hoşgeldiniz</h1>'
+    };
+    const Page_Hakkimizda= {
+        template:`<div class="row">
+                        <div class="col-lg-9">
+                             <h1>Hakkımızda</h1>
+                             <router-view></router-view>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="list-group">
+                                <router-link to="/hakkimizda" class="list-group-item list-group-item-action">Hakkımızda Giriş</router-link>
+                                <router-link to="/hakkimizda/sayfa1" class="list-group-item list-group-item-action">Hakkımızda Sayfa1</router-link>
+                                <router-link to="/hakkimizda/sayfa2" class="list-group-item list-group-item-action">Hakkımızda Sayfa2</router-link>
+                            </div>
+                        </div>
+                    </div>`
+    };
+
+    const Page_Hakkimizda_Giris  = { template:`<div class="jumbotron">Hakkımızda. Biz Kimiz?</div>` };
+    const Page_Hakkimizda_Sayfa1 = { template:`<div class="jumbotron">Hakkımızda. sayfa1?</div>` };
+    const Page_Hakkimizda_Sayfa2 = { template:`<div class="jumbotron">Hakkımızda. sayfa2?</div>` };
+
+    const Page_Urunler= {
+        template:`<div>
+                    <h1>Ürünler</h1>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ürün 1</h5>
+                                    <p class="card-text">Açıklama</p>
+                                    <router-link :to="{ name:'urun-detay',params:{ id:1 } }"  class="btn btn-primary">Detay</router-link>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ürün 2</h5>
+                                    <p class="card-text">Açıklama</p>
+                                     <router-link :to="{ name:'urun-detay',params:{ id:2 } }"  class="btn btn-primary">Detay</router-link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>`
+    };
+    const Page_Urun_Detay= {
+        template:`<div>
+                    <a href="#" @click="geriDon" class="btn btn-primary btn-sm float-right">Geri Dön</a> |
+                    <a href="#" @click="anasayfayaDon" class="btn btn-primary btn-sm float-right">Anasayfaya Dön</a>
+                    <h1>Ürün {{ $route.params.id }} Detay</h1>
+                  </div>`,
+        methods:{
+            geriDon(){
+                this.$router.go(-1);
+            },
+            anasayfayaDon(){
+                this.$router.push('/');
+            }
+        }
+    };
+    const Page_Iletisim= {
+        template:'<h1>İletisim</h1>'
+    };
+
+    const routes = [
+        { path:'/', component:Page_Anasayfa },
+        {
+            path:'/hakkimizda',
+            component:Page_Hakkimizda,
+            alias:'/aboutus',
+            children:[
+                { path: '', component:Page_Hakkimizda_Giris, name: 'hakkimizda-giris' },
+                { path: 'sayfa1', component:Page_Hakkimizda_Sayfa1, name: 'hakkimizda-sayfa1' },
+                { path: 'sayfa2', component:Page_Hakkimizda_Sayfa2, name: 'hakkimizda-sayfa2' }
+            ]
+        },
+        { path:'/urunler',component:Page_Urunler },
+        { path:'/urunler/detay/:id',component:Page_Urun_Detay, name:'urun-detay' },
+        { path:'/iletisim',component:Page_Iletisim, name:'iletisim' },
+    ];
+
+    const router = new VueRouter({
+        routes,
+        mode:'hash'
+    });
+
+    const app = new Vue({
+        router,
+        el:'#app',
+        name:'Ümit UZ VueJS',
+        data:{
+            urunlerLink:'/urunler'
+        }
+    });
+</script>
+</body>
+</html>

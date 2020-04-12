@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+
+<div id="app">
+    <div class="container">
+        <div class="row">
+            <h2>Yapılacaklar Listesi ({{ list.length }} kayıt)</h2>
+            <hr>
+            <div v-if="isLoading">Yükleniyor...</div>
+            <p v-if="list.length===0">Yapılacak listeniz boş...</p>
+            <table class="table table-bordered table-hover" v-if="list.length > 0">
+                <thead>
+                <tr class="bg-success text-white">
+                    <th>Index</th>
+                    <th>Başlık</th>
+                    <th>Yapıldı</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(item, index) in list">
+                    <td>{{ index }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.completed }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="../assets/js/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+<script>
+    const app = new Vue({
+        el:'#app',
+        name:'Ümit UZ App',
+        data:{
+            isLoading:true,
+            list: []
+        },
+        created(){
+            this.$http.get('https://jsonplaceholder.typicode.com/todos').then(response => {
+
+                this.isLoading = true;
+                this.list = response.body;
+
+            }, response => {
+                // error callback
+            });
+        },
+
+    });
+</script>
+</body>
+</html>
