@@ -1,0 +1,67 @@
+{
+  "menuItems": {
+    "HOME": "Anasayfa",
+    "CONTACT": "İletişim"
+  },
+  "pages": {
+    "home": {
+      "TITLE": "Anasayfa",
+      "DESCRIPTION": "Bu sayfa anasayfadır"
+    },
+    "contact": {
+      "TITLE": "İletişim",
+      "DESCRIPTION": "Bu sayfa iletişim sayfasıdır",
+      "SUBMIT_BUTTON": "Bizimle İletişime Geç"
+    },
+    "notFound": {
+      "TITLE": "Sayfa bulunamadı",
+      "DESCRIPTION": "Böyle bir sayfa bulunmamaktadır"
+    }
+  },
+  "placeholder": {
+    "FULL_NAME": "Lütfen ad ve soyadınızı giriniz",
+    "EMAIL": "Lütfen mail adresinizi giriniz",
+    "SUBJECT": "Lütfen konuyu belirtiniz",
+    "MESSAGE": "Lütfen iletmek istediğiniz mesajı giriniz",
+    "PASSWORD": "Lütfen şifrenizi giriniz"
+  },
+  "validation": {
+    "FULL_NAME": "Ad Soyad",
+    "EMAIL": "E-posta Adresi",
+    "SUBJECT": "Konu",
+    "MESSAGE": "Mesaj",
+    "PASSWORD": "Şifre",
+    "PHONE": "Telefon",
+    "COUNTRY": "Ülke"
+  },
+  "errors": {
+    "NOT_FOUND": "Sayfa Bulunamadı"
+  },
+  "dialogs": {
+    "login": {
+      "TITLE": "Giriş Yap",
+      "SUBMIT_BUTTON": "Giriş Yap",
+      "MESSAGE": "Başarıyla giriş yaptınız!",
+      "DESCRIPTION": "Giriş yapabilmek için aşağıda yer alan formu eksiksiz bir şekilde doldurunuz!"
+    },
+    "logout": {
+      "TITLE": "Çıkış Yap",
+      "MESSAGE": "Başarıyla çıkış yaptınız!"
+    }
+  },
+  "general": {
+    "CLOSE": "Kapat",
+    "SUBMIT_MESSAGE": "Form başarıyla gönderildi!",
+    "FOOTER_MESSAGE":"Sosyal ağlarda bizimle bağlantı kurun!"
+  },
+  "countries": {
+    "TR": "Türkiye",
+    "US": "Amerika Birleşik Devletleri",
+    "GB": "Birleşik Krallık",
+    "DE": "Almanya",
+    "SE": "İsviçre",
+    "KE": "Kenya",
+    "BR": "Brezilya",
+    "ZW": "Zimbabve"
+  }
+}

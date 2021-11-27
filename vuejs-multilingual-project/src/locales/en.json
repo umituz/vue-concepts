@@ -1,0 +1,67 @@
+{
+  "menuItems": {
+    "HOME": "Home",
+    "CONTACT": "Contact"
+  },
+  "pages": {
+    "home": {
+      "TITLE": "Homepage",
+      "DESCRIPTION": "This page is homepage"
+    },
+    "contact": {
+      "TITLE": "Contact",
+      "DESCRIPTION": "This page is contact page",
+      "SUBMIT_BUTTON": "Contact Us"
+    },
+    "notFound": {
+      "TITLE": "Not Found",
+      "DESCRIPTION": "This page is not found page"
+    }
+  },
+  "placeholder": {
+    "FULL_NAME": "Please enter your full name",
+    "EMAIL": "Please enter your e-mail address",
+    "SUBJECT": "Please enter the subject",
+    "MESSAGE": "Please enter your message",
+    "PASSWORD": "Please enter your password"
+  },
+  "validation": {
+    "FULL_NAME": "Full name",
+    "EMAIL": "E-mail",
+    "SUBJECT": "Subject",
+    "MESSAGE": "Message",
+    "PASSWORD": "Password",
+    "PHONE": "Phone",
+    "COUNTRY": "Country"
+  },
+  "errors": {
+    "NOT_FOUND": "Not found"
+  },
+  "dialogs": {
+    "login": {
+      "TITLE": "Login",
+      "SUBMIT_BUTTON": "Login",
+      "MESSAGE": "You have successfully logged in!",
+      "DESCRIPTION": "To log in, fill out the form below completely!"
+    },
+    "logout": {
+      "TITLE": "Logout",
+      "MESSAGE": "You have successfully logged out!"
+    }
+  },
+  "general": {
+    "CLOSE": "Close",
+    "SUBMIT_MESSAGE": "Form sent successfully!",
+    "FOOTER_MESSAGE":"Get connected with us on social networks!"
+  },
+  "countries": {
+    "TR": "Turkey",
+    "US": "United States of America",
+    "GB": "United Kingdom",
+    "DE": "Germany",
+    "SE": "Sweden",
+    "KE": "Kenya",
+    "BR": "Brazil",
+    "ZW": "Zimbabwe"
+  }
+}
